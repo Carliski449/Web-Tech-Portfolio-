@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Invitation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: #fef6f0;
+      padding: 50px;
+    }
+
+    .card {
+      border: 1px solid #e0e0e0;
+      padding: 30px;
+      margin: auto;
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 15px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff7f50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Initial Invitation Card -->
+  <div id="initial-card" class="card">
+    <h1>You are Invited!</h1>
+    <p>Join us in celebrating a beautiful union.</p>
+    <button onclick="showPasswordCard()">View Venue</button>
+  </div>
+
+  <!-- Password Card -->
+  <div id="password-card" class="card hidden">
+    <h2>Enter Invitation Code</h2>
+    <input type="password" id="password-input" placeholder="Enter password">
+    <button onclick="checkPassword()">Submit</button>
+    <p id="error-msg" class="error"></p>
+  </div>
+
+  <!-- Final Card -->
+  <div id="final-card" class="card hidden">
+    <h2>Welcome, <span id="guest-name">Guest</span>!</h2>
+    <p>You are officially invited to the wedding of</p>
+    <h3>Amara & Kwame</h3>
+    <p><strong>Location:</strong> Rose Garden, Accra</p>
+    <p><strong>Date:</strong> July 15, 2025</p>
+    <p>We can't wait to celebrate with you!</p>
+  </div>
+
+  <script>
+    function showPasswordCard() {
+      document.getElementById('initial-card').style.display = 'none';
+      document.getElementById('password-card').style.display = 'block';
+    }
+
+    function checkPassword() {
+      const password = document.getElementById('password-input').value;
+      const correctPassword = "wedding2025"; // Change this to your real password
+      const guestName = "Carlin"; // You can also make this dynamic later
+
+      if (password === correctPassword) {
+        document.getElementById('password-card').style.display = 'none';
+        document.getElementById('final-card').style.display = 'block';
+        document.getElementById('guest-name').innerText = guestName;
+      } else {
+        document.getElementById('error-msg').innerText = "Incorrect password. Please try again.";
+      }
+    }
+  </script>
+
+</body>
+</html>
